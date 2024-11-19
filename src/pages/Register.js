@@ -7,13 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Register() {
   const [formData, setFormData] = useState({
     email: "",
-    username: "", // Nuevo campo
+    username: "",
     cif: "",
     phoneNumber: "",
     description: "",
     password: "",
     confirmPassword: "",
   });
+  const [profilePicture, setProfilePicture] = useState(null); // Para manejar la foto
   const navigate = useNavigate();
   const notify = (message) => toast(message);
   const [showPassword, setShowPassword] = useState(false);
@@ -27,6 +28,10 @@ export default function Register() {
     }));
   };
 
+  const handleFileChange = (e) => {
+    setProfilePicture(e.target.files[0]); // Asignar la foto seleccionada
+  };
+
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword(!showConfirmPassword);
@@ -34,22 +39,23 @@ export default function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const entry = {
-      email: formData.email,
-      username: formData.username, // Incluye el nuevo campo
-      password: formData.password,
-      cif: formData.cif,
-      phoneNumber: formData.phoneNumber,
-      description: formData.description,
-      profilePicture: "",
-    };
+    const entry = new FormData(); // Usar FormData para enviar archivos
+    entry.append("email", formData.email);
+    entry.append("username", formData.username);
+    entry.append("password", formData.password);
+    entry.append("cif", formData.cif);
+    entry.append("phoneNumber", formData.phoneNumber);
+    entry.append("description", formData.description);
+    if (profilePicture) {
+      entry.append("profilePicture", profilePicture); // Adjuntar la foto si existe
+    }
 
-    if (!/^\d{8}$/.test(entry.cif)) {
+    if (!/^\d{8}$/.test(formData.cif)) {
       notify("El CIF debe de tener 8 dígitos.");
       return;
     }
 
-    if (!/^\d{8}$/.test(entry.phoneNumber)) {
+    if (!/^\d{8}$/.test(formData.phoneNumber)) {
       notify("El número telefónico debe de tener 8 dígitos.");
       return;
     }
@@ -67,15 +73,11 @@ export default function Register() {
     try {
       const response = await fetch('http://localhost:26417/api/auth/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: "include",
-        body: JSON.stringify(entry),
+        body: entry, // Enviar FormData
       });
 
       if (response.ok) {
-        notify('User registered successfully! 🎉');
+        notify('Usuario registrado exitosamente 🎉');
         navigate('/'); // Redirige al menú principal
       } else {
         const errorData = await response.json();
@@ -270,6 +272,20 @@ export default function Register() {
                 className={`ri-eye${showConfirmPassword ? "-line" : "-off-line"} login__eye`}
                 onClick={toggleConfirmPasswordVisibility}
               ></i>
+            </div>
+          </div>
+
+          {/* Profile Picture */}
+          <div className="login__box">
+            <i className="ri-image-line login__icon"></i>
+            <div className="login__box-input">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="login__input"
+              />
+              <label className="login__label">Foto de Perfil</label>
             </div>
           </div>
 
