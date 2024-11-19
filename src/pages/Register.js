@@ -118,7 +118,7 @@ export default function Register() {
   return (
     <div className="login">
       <img
-        src="../uam_background_img.jpg" //Background fondo de UAM
+        src="../uam_background_img.jpg" //Background fondo de UAM de registro
         alt="login background"
         className="login__img"
       />
