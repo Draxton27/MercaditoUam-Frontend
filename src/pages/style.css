@@ -1,0 +1,253 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+input,
+button {
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  color: hsl(0, 0%, 100%);
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== LOGIN ===============*/
+.login {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra los cuadros horizontalmente */
+}
+
+.login__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Contenedor principal de cuadros */
+.register-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1400px; /* Aumenta el tamaño máximo */
+  margin: 0 auto; /* Asegura centrado horizontal */
+}
+
+/* Cuadro izquierdo */
+.left-box {
+  flex: 1;
+  background-color: hsla(0, 0%, 10%, 0.2);
+  border: 2px solid white;
+  padding: 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  min-width: 480px; /* Tamaño mínimo ajustado */
+  max-width: 480px; /* Tamaño máximo ajustado */
+}
+
+/* Cuadro derecho */
+.right-box {
+  flex: 1;
+  background-color: hsla(0, 0%, 10%, 0.2);
+  border: 2px solid white;
+  padding: 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  min-width: 480px; /* Tamaño mínimo ajustado */
+  max-width: 480px; /* Tamaño máximo ajustado */
+}
+
+.login__title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+/* Labels y Inputs */
+.login__box {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.login__input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: none;
+  color: hsl(0, 0%, 100%);
+  position: relative;
+  z-index: 1;
+}
+
+textarea.login__input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.login__label {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: hsl(0, 0%, 80%);
+  transition: top 0.3s, font-size 0.3s;
+}
+
+/* Botón de registro */
+.login__button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradiente atractivo */
+  color: hsl(0, 0%, 100%);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.login__button:hover {
+  transform: translateY(-3px); /* Efecto de elevación */
+  box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4); /* Sombra suave */
+}
+
+.login__button:active {
+  transform: translateY(0); /* Baja el botón al hacer clic */
+  box-shadow: none;
+}
+
+/* Texto de registro */
+.login__register {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: hsl(0, 0%, 80%);
+}
+
+.login__register a {
+  font-weight: 600;
+  color: #feb47b;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login__register a:hover {
+  color: #ff7e5f; /* Color más intenso al pasar el cursor */
+}
+
+
+/* Movimiento de los labels al enfocar */
+.login__input:focus + .login__label,
+.login__input:not(:placeholder-shown).login__label {
+  top: -20px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 100%);
+}
+
+/* Botón de registro */
+.login__button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* Responsive: Ajustes para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-box,
+  .right-box {
+    width: 100%;
+    max-width: 480px; /* Ajuste para pantallas pequeñas */
+  }
+}
+
+
+/* Movimiento de los labels al enfocar o cuando haya texto */
+.login__input:focus + .login__label,
+.login__input:not(:placeholder-shown) + .login__label {
+  top: -20px; /* Mueve el label hacia arriba */
+  left: 10px; /* Ajusta el margen izquierdo */
+  font-size: 0.8rem; /* Reduce el tamaño */
+  color: hsl(0, 0%, 100%); /* Cambia el color */
+}
+
+.login__eye {
+  position: absolute;
+  right: 10px; /* Ajusta según tu diseño */
+  top: 50%; /* Centrado vertical */
+  transform: translateY(-50%);
+  font-size: 1.2rem; /* Tamaño del ícono */
+  color: hsl(0, 0%, 80%);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.login__eye:hover {
+  color: hsl(0, 0%, 100%);
+}
+
+.login__icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: hsl(0, 0%, 80%);
+}
+
+.login__box {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-left: 2rem; /* Espacio adicional para los íconos */
+}
+
+.login__box-input {
+  position: relative;
+}
+
