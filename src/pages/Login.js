@@ -49,7 +49,7 @@ export default function Login() {
   return (
     <div className="login">
       <img
-        src="../background-image.jpg"
+        src="../uam_background_img.jpg" //Background fondo de UAM de login
         alt="login background"
         className="login__img"
       />
