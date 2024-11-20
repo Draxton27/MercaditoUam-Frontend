@@ -28,7 +28,7 @@ export default function MarketPlace() {
                     // Procesar los productos para agregar el esquema MIME al imageData
                     const processedData = data.map(product => {
                         // Intenta asumir PNG por defecto. Puedes agregar lógica si el formato es determinable dinámicamente.
-                        const mimeType = "image/jpeg"; // Cambia a "image/jpeg" si sabes que son JPG.
+                        const mimeType = "image/png"; // Cambia a "image/jpeg" si sabes que son JPG.
                         const base64Image = product.imageData
                             ? `data:${mimeType};base64,${product.imageData}`
                             : "https://via.placeholder.com/300x200.png?text=Sin+Imagen"; // Manejar casos donde no haya imagen

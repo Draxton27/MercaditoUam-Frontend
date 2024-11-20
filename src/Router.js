@@ -3,9 +3,9 @@ import Cookies from 'js-cookie';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute"; 
-import NoPage from "./pages/NoPage";
 import MarketPlace from "./pages/MarketPlace"
+
+import CreateProductPage from "./pages/CreateProductPage";
 // Function to get the access token (JWT) from cookies
 const getAccessToken = () => {
     return Cookies.get('jwt');
@@ -35,6 +35,10 @@ const router = createBrowserRouter(
         {
             path: '/marketplace', // Path for user login
             element: <MarketPlace /> // Render the Login component
+        },
+        {
+            path: "/marketplace/create",
+            element: <CreateProductPage />,
         },
         {
             path: '*', // Wildcard path for any undefined routes

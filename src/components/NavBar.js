@@ -26,6 +26,25 @@ export default function NavBar() {
     };
   }, []);
 
+
+  const handleLogout = async () => {
+
+    try {
+      const response = await fetch("http://localhost:8080/api/auth/logout", {
+        method: "GET"
+      });
+
+      if (response.ok) {
+        console.log("Cierre de sesión exitoso");
+        window.location.href = "/login"; // Redirige a la página de inicio de sesión
+      } else {
+        console.error("Error al cerrar sesión");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud de logout:", error);
+    }
+  };
+
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -109,63 +128,64 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center space-x-4 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div
+              className="absolute inset-y-0 right-0 flex items-center space-x-4 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <a
-              href="/marketplace/create"
-              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500 transition duration-150"
+                href="/marketplace/create"
+                className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500 transition duration-150"
             >
               Crear Publicación
             </a>
-            <a
-              href="/logout"
-              className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-500 transition duration-150"
+            <button
+                onClick={handleLogout}
+                className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-500 transition duration-150"
             >
               Cerrar Sesión
-            </a>
+            </button>
             <div className="relative ml-3" ref={menuRef}>
               <div>
                 <button
-                  type="button"
-                  onClick={toggleMenu}
-                  className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  id="user-menu-button"
-                  aria-expanded={isMenuOpen}
-                  aria-haspopup="true"
+                    type="button"
+                    onClick={toggleMenu}
+                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    id="user-menu-button"
+                    aria-expanded={isMenuOpen}
+                    aria-haspopup="true"
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">Open user menu</span>
                   <img
-                    className="size-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
+                      className="size-8 rounded-full"
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
                   />
                 </button>
               </div>
               {isMenuOpen && (
-                <div
-                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="user-menu-button"
-                  tabIndex="-1"
-                >
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700"
-                    role="menuitem"
-                    onClick={closeMenu}
+                  <div
+                      className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="user-menu-button"
+                      tabIndex="-1"
                   >
-                    Mi Perfil
-                  </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700"
-                    role="menuitem"
-                    onClick={closeMenu}
-                  >
-                    Configuraciones
-                  </a>
-                </div>
+                    <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700"
+                        role="menuitem"
+                        onClick={closeMenu}
+                    >
+                      Mi Perfil
+                    </a>
+                    <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700"
+                        role="menuitem"
+                        onClick={closeMenu}
+                    >
+                      Configuraciones
+                    </a>
+                  </div>
               )}
             </div>
           </div>
