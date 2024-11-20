@@ -25,7 +25,7 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:26417/api/auth/login", {
+      const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function Login() {
 
       if (response.ok) {
         notify("Logged in successfully!");
-        navigate("/tasks");
+        navigate("/marketplace");
       } else {
         const errorData = await response.json();
         notify(`Error: ${errorData.message}`);
