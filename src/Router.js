@@ -3,7 +3,8 @@ import Cookies from 'js-cookie';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { createBrowserRouter } from "react-router-dom";
-import MarketPlace from "./pages/MarketPlace"
+import MarketPlace from "./pages/MarketPlace";
+import ProductDetails from "./pages/ProductDetails";
 
 import CreateProductPage from "./pages/CreateProductPage";
 // Function to get the access token (JWT) from cookies
@@ -39,6 +40,10 @@ const router = createBrowserRouter(
         {
             path: "/marketplace/create",
             element: <CreateProductPage />,
+        },
+        {
+            path: "/product/:productId",
+            element: <ProductDetails />,
         },
         {
             path: '*', // Wildcard path for any undefined routes
