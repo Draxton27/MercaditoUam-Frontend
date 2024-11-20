@@ -156,7 +156,7 @@ export default function Register() {
           <form className="container left-box">
             <h2 className="login__title">Detalles del Usuario</h2>
             <div className="login__box">
-              <i className="ri-mail-line login__icon"></i>
+              <i className="ri-mail-line login__icon icon_color"></i>
               <div className="login__box-input">
                 <input
                     type="email"
