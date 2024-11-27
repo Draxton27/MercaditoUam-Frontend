@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { createBrowserRouter } from "react-router-dom";
 import MarketPlace from "./pages/MarketPlace";
+import ProfilePage from "./pages/ProfilePage";
 
 import CreateProductPage from "./pages/CreateProductPage";
 import ProductDetails from "./components/ProductDetails";
@@ -48,6 +49,10 @@ const router = createBrowserRouter(
         {
             path: '*', // Wildcard path for any undefined routes
             element: <Login /> // Render the Login component for undefined routes (can be changed to NoPage or another 404 page)
+        },
+        {
+            path: '/profile',
+            element: <ProfilePage />
         }
     ]
 );

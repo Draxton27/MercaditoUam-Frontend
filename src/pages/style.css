@@ -251,4 +251,43 @@ textarea.login__input {
 .login__box-input {
   position: relative;
 }
+.profile-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #bdc9e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: #feb47b;
+}
 
+.profile-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.profile-field {
+  margin-bottom: 15px;
+  color: black;
+}
+
+.profile-field label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile-value {
+  font-size: 1rem;
+  color: black;
+}
+
+.profile-picture {
+  display: block;
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-top: 10px;
+}
