@@ -1,0 +1,17 @@
+{
+  "1": [
+    "/product1.jpeg",
+    "/product11.png",
+    "/assets/images/product1-3.jpg"
+  ],
+  "2": [
+    "https://via.placeholder.com/500x500.png?text=Imagen+Externa+2",
+    "/assets/images/product2-2.jpg",
+    "/assets/images/product2-3.jpg"
+  ],
+  "3": [
+    "https://via.placeholder.com/500x500.png?text=Imagen+Externa+3",
+    "/assets/images/product3-2.jpg",
+    "/assets/images/product3-3.jpg"
+  ]
+}

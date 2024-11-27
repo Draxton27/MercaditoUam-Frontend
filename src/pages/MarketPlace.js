@@ -25,22 +25,11 @@ export default function MarketPlace() {
                 if (response.ok) {
                     const data = await response.json();
 
-                    // Procesar los productos para agregar el esquema MIME al imageData
-                    const processedData = data.map(product => {
-                        // Intenta asumir PNG por defecto. Puedes agregar lógica si el formato es determinable dinámicamente.
-                        const mimeType = "image/png"; // Cambia a "image/jpeg" si sabes que son JPG.
-                        const base64Image = product.imageData
-                            ? `data:${mimeType};base64,${product.imageData}`
-                            : "https://via.placeholder.com/300x200.png?text=Sin+Imagen"; // Manejar casos donde no haya imagen
-
-                        console.log("Base64 generado:", product.imageData); // Verifica si la cadena Base64 tiene contenido válido.
-                        console.log("URL generada:", base64Image);
-
-                        return {
-                            ...product,
-                            imageUrl: base64Image,
-                        };
-                    });
+                    // Procesar los productos para agregar un placeholder como imagen
+                    const processedData = data.map(product => ({
+                        ...product,
+                        imageUrl: "https://via.placeholder.com/300x200.png?text=Imagen+No+Disponible", // Placeholder fijo
+                    }));
 
                     setProducts(processedData); // Asigna los productos procesados al estado
                 } else {
